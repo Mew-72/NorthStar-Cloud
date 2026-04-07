@@ -1,143 +1,108 @@
-# E-commerce Product Card - Design Studio
+# Northstar Operations Cloud
 
-A stunning e-commerce interface built with React, Framer Motion, and Tailwind CSS featuring glassmorphic design, smooth entrance animations, dark mode support, and premium spacing.
+Northstar is a bold, Bauhaus-inspired fictional SaaS landing page built with React, Vite, and Tailwind CSS.
 
-## Features
+## Overview
 
-✨ **Glassmorphic Design** - Modern frosted glass effect with backdrop blur
-🎬 **Smooth Animations** - Entrance animations, hover effects, and interactive transitions
-🌙 **Dark Mode** - Full dark mode support with system theme detection
-📱 **Responsive** - Mobile-first design that works beautifully on all devices
-⚡ **Performance Optimized** - Lazy animations and efficient rendering
-♿ **Accessible** - Semantic HTML and keyboard navigation support
-🎨 **Premium Feel** - Generous spacing, careful typography, and visual hierarchy
-
-## Components
-
-### SiteLoader
-- Beautiful entrance animation with circular loader
-- Animated orbiting dots and gradient effects
-- Progress indicator bar
-- Auto-dismiss after 3.5 seconds
-
-### ProductCard
-- Glassmorphic card container
-- Image zoom on hover
-- Wishlist button with heart animation
-- Stock indicator with pulse animation
-- Discount badge
-- Rating and reviews display
-- Add to cart and view buttons
-- Shine effect on hover
-- Staggered entrance animations
-
-### App
-- Navigation header with dark mode toggle
-- Hero section with gradient text
-- Product grid (responsive 1-3 columns)
-- CTA section with subscription prompt
-- Footer with company info
-- Smooth page transitions
+This project includes:
+- A high-contrast editorial hero
+- Geometric motion accents
+- Branded content sections (insights, capabilities, process, social proof)
+- Pricing and FAQ sections
+- Responsive layout for desktop and mobile
 
 ## Tech Stack
 
-- **React 18** - UI library
-- **Framer Motion** - Animation library
-- **Tailwind CSS** - Utility-first CSS framework
-- **Vite** - Build tool and dev server
+- React 18
+- Vite
+- Tailwind CSS
+- PostCSS + Autoprefixer
 
-## Installation & Setup
+## Local Development
 
-### Prerequisites
-- Node.js 16+ and npm
+Prerequisites:
+- Node.js 18+ recommended
+- npm
 
-### Quick Start
+Install dependencies:
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
-
-# Open browser to http://localhost:3000
 ```
 
-### Build for Production
+Run locally:
+
+```bash
+npm run dev
+```
+
+Build for production:
 
 ```bash
 npm run build
+```
+
+Preview production build:
+
+```bash
 npm run preview
 ```
 
 ## Project Structure
 
-```
-xyz/
-├── src/
-│   ├── components/
-│   │   ├── SiteLoader.jsx      # Entrance loader animation
-│   │   └── ProductCard.jsx     # Product card component
-│   ├── styles/
-│   │   └── globals.css         # Global styles & glassmorphism
-│   ├── App.jsx                 # Main app component
-│   └── main.jsx                # Entry point
-├── index.html                  # HTML template
-├── package.json                # Dependencies
-├── vite.config.js              # Vite configuration
-├── tailwind.config.js          # Tailwind configuration
-├── postcss.config.js           # PostCSS configuration
-└── README.md                   # This file
+```text
+.
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
+└── src
+	├── AcmeApp.jsx
+	├── main.jsx
+	└── styles
+		└── globals.css
 ```
 
-## Customization
+## Branding Notes
 
-### Colors & Gradients
-Edit the gradient colors in:
-- `tailwind.config.js` - Design tokens
-- `src/styles/globals.css` - Global styles
+- Browser title and favicon are set in index.html.
+- Main page copy and section content are in src/AcmeApp.jsx.
+- Global design tokens/utilities and animations are in src/styles/globals.css.
 
-### Animation Speed
-Adjust animation durations in:
-- `src/components/SiteLoader.jsx` - Loader animations
-- `src/components/ProductCard.jsx` - Card animations
-- `src/App.jsx` - Page transitions
+## GitHub Publish
 
-### Products Data
-Modify `FEATURED_PRODUCTS` array in `src/App.jsx` to update product information.
+If this repo is already connected to GitHub, push updates with:
 
-### Spacing & Layout
-Tailwind classes control spacing. Key customizations:
-- `p-6` - Card padding
-- `gap-6` - Grid spacing
-- `rounded-2xl` - Border radius
+```bash
+git add .
+git commit -m "Update README and branding"
+git push
+```
 
-## Browser Support
+If you are publishing for the first time:
 
-- Chrome/Edge: Full support
-- Firefox: Full support
-- Safari: Full support (with -webkit- prefixes)
-- Mobile browsers: Full support with touch optimizations
+```bash
+git remote add origin https://github.com/<username>/<repo>.git
+git branch -M main
+git push -u origin main
+```
 
-## Performance Tips
+## Deployment
 
-- Images use Unsplash CDN for fast loading
-- Animations use GPU acceleration (transform & opacity)
-- Backdrop filters have fallbacks for older browsers
-- Lazy loading ready for implementation
+Vercel:
+1. Import the GitHub repository.
+2. Framework preset: Vite.
+3. Build command: npm run build.
+4. Output directory: dist.
+5. Deploy.
 
-## Accessibility
-
-- Semantic HTML structure
-- ARIA labels on interactive elements
-- Keyboard navigation support
-- High contrast dark mode
-- Focus visible states on buttons
+Netlify:
+1. Connect repository.
+2. Build command: npm run build.
+3. Publish directory: dist.
+4. Deploy site.
 
 ## License
 
-MIT License - Feel free to use this design studio template for your projects!
-
----
-
-**Built with GitHub Copilot Design Studio** - Creating premium UI experiences.
+MIT
