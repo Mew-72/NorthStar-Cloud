@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Outfit', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F0F0F0] text-[#121212] font-medium;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black uppercase tracking-tighter;
+  }
+}
+
+@layer components {
+  .bauhaus-border {
+    @apply border-4 border-black;
+  }
+
+  .bauhaus-border-2 {
+    @apply border-2 border-black;
+  }
+
+  .bauhaus-shadow-md {
+    @apply shadow-[4px_4px_0px_0px_black];
+  }
+
+  .bauhaus-shadow-lg {
+    @apply shadow-[8px_8px_0px_0px_black];
+  }
+
+  .bauhaus-btn-red {
+    @apply bg-[#D02020] text-white border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
+      hover:bg-white hover:text-[#D02020] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
+      transition-all duration-200 ease-out cursor-pointer;
+  }
+
+  .bauhaus-btn-blue {
+    @apply bg-[#1040C0] text-white border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
+      hover:bg-white hover:text-[#1040C0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
+      transition-all duration-200 ease-out cursor-pointer;
+  }
+
+  .bauhaus-btn-yellow {
+    @apply bg-[#F0C020] text-black border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
+      hover:bg-black hover:text-[#F0C020] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
+      transition-all duration-200 ease-out cursor-pointer;
+  }
+
+  .bauhaus-btn-outline {
+    @apply bg-white text-black border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
+      hover:bg-black hover:text-white active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
+      transition-all duration-200 ease-out cursor-pointer;
+  }
+
+  .bauhaus-card {
+    @apply bg-white border-4 border-black shadow-[8px_8px_0px_0px_black] 
+      hover:-translate-y-1 transition-transform duration-200 ease-out;
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(circle, #121212 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Geometric decorative shapes */
+.geometric-circle {
+  @apply rounded-full;
+}
+
+.geometric-square {
+  @apply rounded-none;
+}
+
+.geometric-rotated {
+  @apply rotate-45;
+}
+
+@keyframes acmeRedBreathe {
+  0%,
+  100% {
+    /* transform: translateY(0) scale(1); */
+    filter: saturate(100%);
+  }
+  50% {
+    /* transform: translateY(-2px) scale(1.03); */
+    filter: saturate(130%);
+  }
+}
+
+@keyframes acmeGeoOne {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  20% {
+    transform: translate(-47%, -53%) rotate(56deg);
+  }
+  45% {
+    transform: translate(-54%, -46%) rotate(72deg);
+  }
+  70% {
+    transform: translate(-48%, -50%) rotate(38deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+@keyframes acmeGeoTwo {
+  0% {
+    transform: translate(-50%, -50%) translate(0, -190px) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -50%) translate(170px, -40px) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(0, 170px) scale(0.92);
+  }
+  75% {
+    transform: translate(-50%, -50%) translate(-170px, -40px) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(0, -190px) scale(1);
+  }
+}
+
+@keyframes acmeGeoThree {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  30% {
+    transform: translate(-44%, -56%) rotate(-12deg);
+  }
+  60% {
+    transform: translate(-54%, -46%) rotate(10deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes acmeDotLoader {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-7px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.acme-red-breathe {
+  animation: acmeRedBreathe 2.8s ease-in-out infinite;
+}
+
+.acme-geo-1 {
+  animation: acmeGeoOne 11s ease-in-out infinite;
+}
+
+.acme-geo-2 {
+  animation: acmeGeoTwo 7.5s ease-in-out infinite;
+}
+
+.acme-geo-3 {
+  animation: acmeGeoThree 8.5s ease-in-out infinite;
+}
+
+.acme-dot-loader {
+  animation: acmeDotLoader 3s ease-in-out infinite;
+}
+
+.acme-dot-delay-1 {
+  animation-delay: 0s;
+}
+
+.acme-dot-delay-2 {
+  animation-delay: 0.25s;
+}
+
+.acme-dot-delay-3 {
+  animation-delay: 0.5s;
+}
+
+/* Smooth transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#F0F0F0];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#121212] hover:bg-[#D02020];
+  border-radius: 0;
+}
+
