@@ -5,5 +5,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
+    allowedHosts: ['sb-534fxz4icrcp.vercel.run'],
   },
 })
