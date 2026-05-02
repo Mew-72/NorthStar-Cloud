@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -35,32 +35,8 @@
     @apply shadow-[8px_8px_0px_0px_black];
   }
 
-  .bauhaus-btn-red {
-    @apply bg-[#D02020] text-white border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
-      hover:bg-white hover:text-[#D02020] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
-      transition-all duration-200 ease-out cursor-pointer;
-  }
-
-  .bauhaus-btn-blue {
-    @apply bg-[#1040C0] text-white border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
-      hover:bg-white hover:text-[#1040C0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
-      transition-all duration-200 ease-out cursor-pointer;
-  }
-
-  .bauhaus-btn-yellow {
-    @apply bg-[#F0C020] text-black border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
-      hover:bg-black hover:text-[#F0C020] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
-      transition-all duration-200 ease-out cursor-pointer;
-  }
-
-  .bauhaus-btn-outline {
-    @apply bg-white text-black border-2 border-black shadow-[4px_4px_0px_0px_black] font-bold uppercase tracking-wider
-      hover:bg-black hover:text-white active:translate-x-[2px] active:translate-y-[2px] active:shadow-none 
-      transition-all duration-200 ease-out cursor-pointer;
-  }
-
   .bauhaus-card {
-    @apply bg-white border-4 border-black shadow-[8px_8px_0px_0px_black] 
+    @apply bg-white border-4 border-black shadow-[8px_8px_0px_0px_black]
       hover:-translate-y-1 transition-transform duration-200 ease-out;
   }
 
@@ -70,128 +46,225 @@
   }
 }
 
-/* Geometric decorative shapes */
-.geometric-circle {
-  @apply rounded-full;
-}
-
-.geometric-square {
-  @apply rounded-none;
-}
-
-.geometric-rotated {
-  @apply rotate-45;
-}
-
-@keyframes acmeRedBreathe {
-  0%,
-  100% {
-    /* transform: translateY(0) scale(1); */
-    filter: saturate(100%);
-  }
-  50% {
-    /* transform: translateY(-2px) scale(1.03); */
-    filter: saturate(130%);
-  }
-}
+/* ========== Hero & Decorative Animations ========== */
 
 @keyframes acmeGeoOne {
-  0% {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  20% {
-    transform: translate(-47%, -53%) rotate(56deg);
-  }
-  45% {
-    transform: translate(-54%, -46%) rotate(72deg);
-  }
-  70% {
-    transform: translate(-48%, -50%) rotate(38deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
+  0% { transform: translate(-50%, -50%) rotate(45deg); }
+  20% { transform: translate(-47%, -53%) rotate(56deg); }
+  45% { transform: translate(-54%, -46%) rotate(72deg); }
+  70% { transform: translate(-48%, -50%) rotate(38deg); }
+  100% { transform: translate(-50%, -50%) rotate(45deg); }
 }
 
 @keyframes acmeGeoTwo {
-  0% {
-    transform: translate(-50%, -50%) translate(0, -190px) scale(1);
-  }
-  25% {
-    transform: translate(-50%, -50%) translate(170px, -40px) scale(1.1);
-  }
-  50% {
-    transform: translate(-50%, -50%) translate(0, 170px) scale(0.92);
-  }
-  75% {
-    transform: translate(-50%, -50%) translate(-170px, -40px) scale(1.1);
-  }
-  100% {
-    transform: translate(-50%, -50%) translate(0, -190px) scale(1);
-  }
+  0% { transform: translate(-50%, -50%) translate(0, -180px) scale(1); }
+  25% { transform: translate(-50%, -50%) translate(160px, -40px) scale(1.08); }
+  50% { transform: translate(-50%, -50%) translate(0, 160px) scale(0.94); }
+  75% { transform: translate(-50%, -50%) translate(-160px, -40px) scale(1.08); }
+  100% { transform: translate(-50%, -50%) translate(0, -180px) scale(1); }
 }
 
 @keyframes acmeGeoThree {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  30% {
-    transform: translate(-44%, -56%) rotate(-12deg);
-  }
-  60% {
-    transform: translate(-54%, -46%) rotate(10deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  30% { transform: translate(-44%, -56%) rotate(-12deg); }
+  60% { transform: translate(-54%, -46%) rotate(10deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
 }
 
+.acme-geo-1 { animation: acmeGeoOne 11s ease-in-out infinite; }
+.acme-geo-2 { animation: acmeGeoTwo 7.5s ease-in-out infinite; }
+.acme-geo-3 { animation: acmeGeoThree 8.5s ease-in-out infinite; }
+
+/* Dot loaders in hero avatar stack */
 @keyframes acmeDotLoader {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-7px);
-  }
-  60% {
-    transform: translateY(-3px);
-  }
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-7px); }
+  60% { transform: translateY(-3px); }
+}
+.acme-dot-loader { animation: acmeDotLoader 3s ease-in-out infinite; }
+.acme-dot-delay-1 { animation-delay: 0s; }
+.acme-dot-delay-2 { animation-delay: 0.2s; }
+.acme-dot-delay-3 { animation-delay: 0.4s; }
+.acme-dot-delay-4 { animation-delay: 0.6s; }
+
+/* Tagline pulse */
+.acme-tagline-fixed {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+  letter-spacing: 0.35em;
 }
 
-.acme-red-breathe {
-  animation: acmeRedBreathe 2.8s ease-in-out infinite;
+/* Hero stage drift */
+@keyframes acmeGridDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+.acme-grid-drift { animation: acmeGridDrift 16s linear infinite; }
+
+/* Diagonal sweep band */
+@keyframes acmeSweep {
+  0% { transform: rotate(-18deg) translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: rotate(-18deg) translateX(100%); opacity: 0; }
+}
+.acme-sweep {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0.32) 50%, rgba(255, 255, 255, 0.18) 55%, transparent 100%);
+  animation: acmeSweep 6s ease-in-out infinite;
 }
 
-.acme-geo-1 {
-  animation: acmeGeoOne 11s ease-in-out infinite;
+/* Floating shapes */
+@keyframes acmeFloatSlow {
+  0%, 100% { transform: translateY(0) rotate(12deg); }
+  50% { transform: translateY(-14px) rotate(8deg); }
+}
+@keyframes acmeFloatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.acme-float-slow { animation: acmeFloatSlow 5.5s ease-in-out infinite; }
+.acme-float-fast { animation: acmeFloatFast 3.8s ease-in-out infinite; }
+
+/* Hero floating mini cards */
+@keyframes acmeCardFloat1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes acmeCardFloat2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(8px); }
+}
+.acme-card-float-1 { animation: acmeCardFloat1 4.5s ease-in-out infinite; }
+.acme-card-float-2 { animation: acmeCardFloat2 5s ease-in-out infinite; }
+
+/* Bar fill in floating card */
+@keyframes acmeBarFill {
+  0% { width: 0%; }
+  100% { width: 75%; }
+}
+.acme-bar-fill { animation: acmeBarFill 1.6s ease-out forwards; }
+
+/* Eyebrow accent pulse */
+@keyframes acmeEyebrow {
+  0%, 100% { opacity: 1; transform: scaleX(1); }
+  50% { opacity: 0.6; transform: scaleX(1.4); }
+}
+.acme-eyebrow-pulse {
+  transform-origin: left center;
+  animation: acmeEyebrow 2.4s ease-in-out infinite;
 }
 
-.acme-geo-2 {
-  animation: acmeGeoTwo 7.5s ease-in-out infinite;
+/* Scroll indicator line */
+@keyframes acmeScrollLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+.acme-scroll-line { animation: acmeScrollLine 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+
+/* Marquee */
+@keyframes acmeMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.acme-marquee {
+  animation: acmeMarquee 35s linear infinite;
+  width: max-content;
+}
+.acme-marquee:hover {
+  animation-play-state: paused;
 }
 
-.acme-geo-3 {
-  animation: acmeGeoThree 8.5s ease-in-out infinite;
+/* Ping (used for live dots) */
+@keyframes acmePing {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+.acme-ping {
+  animation: acmePing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.acme-dot-loader {
-  animation: acmeDotLoader 3s ease-in-out infinite;
+/* Generic pulse */
+@keyframes acmePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+.acme-pulse { animation: acmePulse 1.8s ease-in-out infinite; }
+
+/* Button shine */
+.acme-shine {
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  pointer-events: none;
+  transform: translateX(-120%) skewX(-20deg);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease-out;
+}
+.group:hover > .acme-shine {
+  transform: translateX(120%) skewX(-20deg);
 }
 
-.acme-dot-delay-1 {
-  animation-delay: 0s;
+/* Magnetic button perf */
+.acme-magnetic {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.acme-dot-delay-2 {
-  animation-delay: 0.25s;
+/* Orbital decorative shapes */
+@keyframes acmeOrbitA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(8px, -6px); }
+}
+@keyframes acmeOrbitB {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50% { transform: rotate(55deg) translate(-6px, 6px); }
+}
+@keyframes acmeOrbitC {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-6px, 8px) rotate(-6deg); }
+}
+.acme-orbit-a { animation: acmeOrbitA 5s ease-in-out infinite; }
+.acme-orbit-b { animation: acmeOrbitB 6s ease-in-out infinite; }
+.acme-orbit-c { animation: acmeOrbitC 5.4s ease-in-out infinite; }
+
+/* Disc spin */
+@keyframes acmeDiscSpin {
+  to { transform: rotate(360deg); }
+}
+.acme-disc-spin { animation: acmeDiscSpin 18s linear infinite; }
+
+/* Radar sweep behind partner image */
+@keyframes acmeRadar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.acme-radar {
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(240, 192, 32, 0.18) 60deg, transparent 120deg, transparent 360deg);
+  animation: acmeRadar 6s linear infinite;
 }
 
-.acme-dot-delay-3 {
-  animation-delay: 0.5s;
+/* Insight card grid */
+.acme-card-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Smooth transitions */
+/* Step connection line draw */
+@keyframes acmeStepLine {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+.acme-step-line {
+  transform-origin: left center;
+  animation: acmeStepLine 1.2s ease-out forwards;
+}
+
+/* Pricing badge wobble */
+@keyframes acmeBadge {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+.acme-badge { animation: acmeBadge 2.6s ease-in-out infinite; }
+
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
@@ -204,13 +277,22 @@ body {
 ::-webkit-scrollbar {
   width: 12px;
 }
-
 ::-webkit-scrollbar-track {
   @apply bg-[#F0F0F0];
 }
-
 ::-webkit-scrollbar-thumb {
   @apply bg-[#121212] hover:bg-[#D02020];
   border-radius: 0;
 }
 
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
