@@ -142,3 +142,35 @@ a, button { -webkit-tap-highlight-color: transparent; }
   box-shadow: 0 10px 30px rgba(24, 24, 23, .07) !important;
 }
 [class~="bg-white"] { background-color: #fffdf8; }
+
+
+/* Scroll-led chapter pacing and the lightweight WebGL crystal layer */
+.northstar-ice-field {
+  overflow: hidden;
+  opacity: .86;
+  mix-blend-mode: screen;
+}
+.northstar-ice-canvas {
+  display: block;
+  opacity: .95;
+}
+.northstar-ice-fallback {
+  background:
+    radial-gradient(ellipse at 48% 48%, rgba(219, 241, 255, .25) 0%, transparent 36%),
+    linear-gradient(128deg, transparent 31%, rgba(248, 253, 255, .16) 48%, transparent 57%);
+  opacity: .8;
+}
+@media (max-width: 767px) {
+  .northstar-ice-field { opacity: .6; }
+  .northstar-ice-fallback {
+    background:
+      radial-gradient(ellipse at 48% 42%, rgba(219, 241, 255, .25) 0%, transparent 34%),
+      linear-gradient(132deg, transparent 40%, rgba(248, 253, 255, .14) 50%, transparent 60%);
+  }
+}
+/* A restrained scroll-in on content already observed by IntersectionObserver. */
+@media (prefers-reduced-motion: no-preference) {
+  main > section:not(:first-child) {
+    scroll-margin-top: 5.5rem;
+  }
+}
