@@ -270,7 +270,7 @@ export default function AcmeApp() {
                   <div className="grid grid-cols-3 gap-3 pt-4 text-center text-xs font-black uppercase tracking-[0.24em] sm:gap-4">
                     <div className="border-2 border-black bg-[#F5F1E7] px-3 py-4 transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Plan</div>
                     <div className="border-2 border-black bg-[#F1BB36] px-3 py-4 transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Build</div>
-                    <div className="border-2 border-black bg-[#F35D68] px-3 py-4 text-white transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Ship</div>
+                    <div className="border-2 border-black bg-[#F35D68] px-3 py-4 text-[#181817] transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Ship</div>
                   </div>
                 </Reveal>
               </div>
@@ -476,14 +476,14 @@ export default function AcmeApp() {
         </section>
 
         {/* Why teams */}
-        <section className="relative overflow-hidden border-b-4 border-black bg-[#F35D68] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
+        <section className="relative overflow-hidden border-b-4 border-black bg-[#181817] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
           <span
             aria-hidden="true"
             className="pointer-events-none absolute -left-12 top-12 h-40 w-40 rounded-full border-4 border-black bg-[#F1BB36] opacity-90 acme-float-slow"
           />
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -right-10 bottom-12 h-40 w-40 border-4 border-black bg-black acme-float-fast"
+            className="pointer-events-none absolute -right-10 bottom-12 h-40 w-40 border-4 border-black bg-[#52C6BF] acme-float-fast"
             style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
           />
           <div className="relative mx-auto max-w-7xl">
@@ -553,7 +553,7 @@ export default function AcmeApp() {
                     <div className="mt-5 flex items-center gap-3 border-t-2 border-black pt-4">
                       <div
                         className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-black text-xs font-black ${
-                          index % 3 === 0 ? 'bg-[#F35D68] text-white' : index % 3 === 1 ? 'bg-[#F1BB36]' : 'bg-[#52C6BF] text-white'
+                          index % 3 === 0 ? 'bg-[#F35D68] text-[#181817]' : index % 3 === 1 ? 'bg-[#F1BB36]' : 'bg-[#52C6BF] text-[#181817]'
                         }`}
                       >
                         {item.name.split(' ').map((n) => n[0]).join('')}
@@ -589,7 +589,7 @@ export default function AcmeApp() {
                     } ${plan.tone === 'highlight' ? 'lg:-translate-y-4' : ''}`}
                   >
                     {plan.tone === 'highlight' && (
-                      <span className="acme-badge absolute -right-3 -top-3 inline-flex items-center gap-2 border-2 border-black bg-[#F35D68] px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white shadow-[3px_3px_0px_0px_black]">
+                      <span className="acme-badge absolute -right-3 -top-3 inline-flex items-center gap-2 border-2 border-black bg-[#F35D68] px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-[#181817] shadow-[3px_3px_0px_0px_black]">
                         <span className="h-1.5 w-1.5 rounded-full bg-white acme-pulse" />
                         Most popular
                       </span>
