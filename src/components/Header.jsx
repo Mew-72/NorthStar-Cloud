@@ -55,7 +55,7 @@ export default function Header() {
         </button>
       </div>
 
-      <div className={`overflow-hidden border-t border-black/10 bg-[#F5F1E7] transition-[max-height,opacity] duration-300 md:hidden ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`overflow-hidden border-t border-black/10 bg-[#F5F1E7] transition-[max-height,opacity] duration-300 lg:hidden ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="px-5 py-4">
           <div className="flex flex-col gap-1">
             {navLinks.map((link, idx) => (
