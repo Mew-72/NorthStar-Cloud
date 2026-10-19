@@ -4,7 +4,7 @@ export default function ActionButton({ variant = 'primary', className = '', chil
   const ref = useRef(null)
 
   const variants = {
-    primary: 'border-[#181817] bg-[#181817] text-white hover:border-[#F35D68] hover:bg-[#F35D68] hover:text-white',
+    primary: 'border-[#181817] bg-[#181817] text-white hover:border-[#F35D68] hover:bg-[#F35D68] hover:text-[#181817]',
     secondary: 'border-white/30 bg-white text-[#181817] hover:border-[#181817] hover:bg-[#181817] hover:text-white',
     dark: 'border-[#181817] bg-[#181817] text-white hover:bg-[#F1BB36] hover:text-[#181817]',
     outline: 'border-black/20 bg-transparent text-[#181817] hover:border-[#181817] hover:bg-black/5',
