@@ -7,6 +7,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const onScroll = () => {
@@ -18,6 +19,26 @@ export default function Header() {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const targets = navLinks
+      .map((link) => document.getElementById(link.toLowerCase()))
+      .filter(Boolean)
+    if (!targets.length || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) =>
+          Math.abs(a.boundingClientRect.top - window.innerHeight * 0.35) -
+          Math.abs(b.boundingClientRect.top - window.innerHeight * 0.35),
+        )[0]
+      if (visible) setActiveSection(visible.target.id)
+    }, { rootMargin: '-12% 0px -58% 0px', threshold: [0, 0.1, 0.25, 0.5] })
+
+    targets.forEach((target) => observer.observe(target))
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -37,9 +58,9 @@ export default function Header() {
 
         <nav className="hidden items-center gap-2 lg:flex">
           {navLinks.map((link) => (
-            <a key={link} href={`#${link.toLowerCase()}`} className="group relative px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-[#5f5d56] transition-colors duration-200 hover:text-[#181817]">
+            <a key={link} href={`#${link.toLowerCase()}`} aria-current={activeSection === link.toLowerCase() ? 'location' : undefined} className={`group relative px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 ${activeSection === link.toLowerCase() ? 'text-[#181817]' : 'text-[#5f5d56] hover:text-[#181817]'}`}>
               {link}
-              <span aria-hidden="true" className="absolute bottom-0 left-3 right-3 h-px origin-left scale-x-0 bg-[#F35D68] transition-transform duration-300 group-hover:scale-x-100" />
+              <span aria-hidden="true" className={`absolute bottom-0 left-3 right-3 h-px origin-left bg-[#F35D68] transition-transform duration-300 ${activeSection === link.toLowerCase() ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
             </a>
           ))}
         </nav>
