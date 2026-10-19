@@ -224,16 +224,16 @@ export default function AcmeApp() {
   }
 
   return (
-    <div className="overflow-x-hidden bg-[#F3F0E6] text-[#111] selection:bg-[#F0C020] selection:text-black">
+    <div className="overflow-x-hidden bg-[#F5F1E7] text-[#111] selection:bg-[#F1BB36] selection:text-black">
       <Header />
 
       <main id="top">
         <Hero />
 
         {/* Platform overview */}
-        <section className="border-b-4 border-black bg-[#F0F0F0]">
+        <section className="border-b-4 border-black bg-[#F5F1E7]">
           <div className="grid w-full lg:grid-cols-2">
-            <div className="relative flex min-h-[28rem] items-center justify-center overflow-hidden border-b-4 border-black bg-[#D02020] p-10 lg:border-b-0 lg:border-r-4">
+            <div className="relative flex min-h-[28rem] items-center justify-center overflow-hidden border-b-4 border-black bg-[#F35D68] p-10 lg:border-b-0 lg:border-r-4">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 opacity-30"
@@ -245,7 +245,7 @@ export default function AcmeApp() {
               />
               <Reveal variant="scale" className="relative h-60 w-60">
                 <div className="absolute left-0 top-0 h-28 w-28 rounded-full border-4 border-black bg-white shadow-[8px_8px_0px_0px_black] acme-orbit-a" />
-                <div className="absolute right-2 top-16 h-36 w-36 rotate-45 border-4 border-black bg-[#F0C020] shadow-[10px_10px_0px_0px_black] acme-orbit-b" />
+                <div className="absolute right-2 top-16 h-36 w-36 rotate-45 border-4 border-black bg-[#F1BB36] shadow-[10px_10px_0px_0px_black] acme-orbit-b" />
                 <div className="absolute left-24 top-12 h-24 w-24 border-4 border-black bg-black shadow-[6px_6px_0px_0px_white] acme-orbit-c" />
               </Reveal>
             </div>
@@ -253,7 +253,7 @@ export default function AcmeApp() {
             <div className="flex items-center bg-white px-4 py-16 sm:px-6 lg:px-12 lg:py-20">
               <div className="max-w-xl space-y-6">
                 <Reveal>
-                  <p className="text-xs font-black uppercase tracking-[0.35em] text-[#D02020]">Platform overview</p>
+                  <p className="text-xs font-black uppercase tracking-[0.35em] text-[#F35D68]">Platform overview</p>
                 </Reveal>
                 <Reveal delay={100}>
                   <h2 className="text-balance text-4xl font-black uppercase leading-[0.95] tracking-tighter sm:text-5xl lg:text-6xl">
@@ -268,9 +268,9 @@ export default function AcmeApp() {
                 </Reveal>
                 <Reveal delay={300}>
                   <div className="grid grid-cols-3 gap-3 pt-4 text-center text-xs font-black uppercase tracking-[0.24em] sm:gap-4">
-                    <div className="border-2 border-black bg-[#F0F0F0] px-3 py-4 transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Plan</div>
-                    <div className="border-2 border-black bg-[#F0C020] px-3 py-4 transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Build</div>
-                    <div className="border-2 border-black bg-[#D02020] px-3 py-4 text-white transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Ship</div>
+                    <div className="border-2 border-black bg-[#F5F1E7] px-3 py-4 transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Plan</div>
+                    <div className="border-2 border-black bg-[#F1BB36] px-3 py-4 transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Build</div>
+                    <div className="border-2 border-black bg-[#F35D68] px-3 py-4 text-white transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_black]">Ship</div>
                   </div>
                 </Reveal>
               </div>
@@ -279,7 +279,7 @@ export default function AcmeApp() {
         </section>
 
         {/* Stats */}
-        <section className="border-b-4 border-black bg-[#F0C020]">
+        <section className="border-b-4 border-black bg-[#F1BB36]">
           <div className="grid w-full grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, index) => (
               <AnimatedStat
@@ -296,7 +296,7 @@ export default function AcmeApp() {
         </section>
 
         {/* Partners */}
-        <section id="product" className="border-b-4 border-black bg-[#F4F1E8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <section id="product" className="border-b-4 border-black bg-[#F5F1E7] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <SectionHeading
               eyebrow="Partners"
@@ -313,8 +313,8 @@ export default function AcmeApp() {
                         aria-hidden="true"
                         className="acme-radar pointer-events-none absolute inset-0"
                       />
-                      <div className="relative h-56 w-56 rounded-full border-4 border-black bg-[#F4F1E8] flex items-center justify-center overflow-hidden">
-                        <div className="h-40 w-40 rounded-full border-4 border-black bg-gradient-to-br from-[#111] via-[#333] to-[#D02020] acme-disc-spin" />
+                      <div className="relative h-56 w-56 rounded-full border-4 border-black bg-[#F5F1E7] flex items-center justify-center overflow-hidden">
+                        <div className="h-40 w-40 rounded-full border-4 border-black bg-gradient-to-br from-[#111] via-[#333] to-[#F35D68] acme-disc-spin" />
                       </div>
                     </div>
                     <div className="space-y-4 px-2 py-5 text-center">
@@ -336,7 +336,7 @@ export default function AcmeApp() {
         </section>
 
         {/* Insights */}
-        <section id="features" className="relative overflow-hidden border-b-4 border-black bg-[#1040C0] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
+        <section id="features" className="relative overflow-hidden border-b-4 border-black bg-[#181817] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 opacity-20"
@@ -364,7 +364,7 @@ export default function AcmeApp() {
                   >
                     <div
                       className={`relative h-40 overflow-hidden border-b-4 border-black ${
-                        index === 1 ? 'bg-[#111]' : index === 2 ? 'bg-[#F0C020]' : 'bg-[#D02020]'
+                        index === 1 ? 'bg-[#111]' : index === 2 ? 'bg-[#F1BB36]' : 'bg-[#F35D68]'
                       }`}
                     >
                       <div
@@ -376,7 +376,7 @@ export default function AcmeApp() {
                       </div>
                     </div>
                     <div className="space-y-3 p-5">
-                      <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#D02020]">{post.tag}</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#F35D68]">{post.tag}</p>
                       <h3 className="text-2xl font-black uppercase leading-tight tracking-tighter">{post.title}</h3>
                       <p className="text-sm leading-relaxed text-[#444]">{post.blurb}</p>
                       <a
@@ -395,7 +395,7 @@ export default function AcmeApp() {
         </section>
 
         {/* Features grid */}
-        <section className="border-b-4 border-black bg-[#F4F1E8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <section className="border-b-4 border-black bg-[#F5F1E7] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <SectionHeading
               eyebrow="Capabilities"
@@ -413,25 +413,25 @@ export default function AcmeApp() {
                   >
                     <div
                       aria-hidden="true"
-                      className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#F0C020] opacity-0 transition-all duration-500 group-hover:opacity-30"
+                      className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#F1BB36] opacity-0 transition-all duration-500 group-hover:opacity-30"
                     />
                     <div className="relative flex items-start justify-between gap-4">
                       <div className="space-y-4">
-                        <div className="flex h-10 w-10 items-center justify-center border-2 border-black bg-[#F4F1E8] font-black transition-transform duration-300 group-hover:rotate-[-12deg]">
+                        <div className="flex h-10 w-10 items-center justify-center border-2 border-black bg-[#F5F1E7] font-black transition-transform duration-300 group-hover:rotate-[-12deg]">
                           {String(index + 1).padStart(2, '0')}
                         </div>
                         <h3 className="text-lg font-black uppercase tracking-tight">{feature}</h3>
                       </div>
                       <div
                         className={`h-3 w-3 border border-black transition-transform duration-300 group-hover:scale-150 ${
-                          index % 3 === 0 ? 'bg-[#D02020]' : index % 3 === 1 ? 'bg-[#1040C0]' : 'bg-[#F0C020]'
+                          index % 3 === 0 ? 'bg-[#F35D68]' : index % 3 === 1 ? 'bg-[#52C6BF]' : 'bg-[#F1BB36]'
                         }`}
                       />
                     </div>
                     <p className="relative mt-4 text-sm leading-relaxed text-[#444]">
                       Thoughtful spacing and contrast keep the card easy to scan even as the list grows.
                     </p>
-                    <div className="mt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.35em] text-black/60 transition-all duration-300 group-hover:text-[#D02020]">
+                    <div className="mt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.35em] text-black/60 transition-all duration-300 group-hover:text-[#F35D68]">
                       <span className="h-[2px] w-6 bg-current transition-all duration-300 group-hover:w-10" />
                       Explore
                     </div>
@@ -455,7 +455,7 @@ export default function AcmeApp() {
             <div className="mt-20 grid gap-12 lg:grid-cols-3 lg:gap-10">
               {steps.map((step, index) => (
                 <Reveal key={step.title} delay={index * 160}>
-                  <article className="group relative border-4 border-black bg-[#F4F1E8] p-6 shadow-[8px_8px_0px_0px_black] transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_black]">
+                  <article className="group relative border-4 border-black bg-[#F5F1E7] p-6 shadow-[8px_8px_0px_0px_black] transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_black]">
                     <div className="absolute -top-7 left-1/2 flex h-14 w-14 -translate-x-1/2 items-center justify-center border-4 border-black bg-white text-xl font-black shadow-[4px_4px_0px_0px_black] transition-transform duration-300 group-hover:rotate-12">
                       {index + 1}
                     </div>
@@ -476,10 +476,10 @@ export default function AcmeApp() {
         </section>
 
         {/* Why teams */}
-        <section className="relative overflow-hidden border-b-4 border-black bg-[#D02020] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
+        <section className="relative overflow-hidden border-b-4 border-black bg-[#F35D68] px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-28">
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -left-12 top-12 h-40 w-40 rounded-full border-4 border-black bg-[#F0C020] opacity-90 acme-float-slow"
+            className="pointer-events-none absolute -left-12 top-12 h-40 w-40 rounded-full border-4 border-black bg-[#F1BB36] opacity-90 acme-float-slow"
           />
           <span
             aria-hidden="true"
@@ -509,7 +509,7 @@ export default function AcmeApp() {
                     className="border-4 border-black bg-white p-5 text-[#111] shadow-[6px_6px_0px_0px_black] hover:shadow-[10px_10px_0px_0px_black]"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-[#F0C020] text-sm font-black shadow-[3px_3px_0px_0px_black]">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-black bg-[#F1BB36] text-sm font-black shadow-[3px_3px_0px_0px_black]">
                         ✓
                       </div>
                       <h3 className="text-lg font-black uppercase tracking-tighter">{reason.title}</h3>
@@ -523,7 +523,7 @@ export default function AcmeApp() {
         </section>
 
         {/* Testimonials */}
-        <section className="border-b-4 border-black bg-[#F3F0E6] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <section className="border-b-4 border-black bg-[#F5F1E7] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <SectionHeading
               eyebrow="Social proof"
@@ -544,7 +544,7 @@ export default function AcmeApp() {
                         <span
                           key={i}
                           className={`h-3 w-3 border border-black ${
-                            index % 2 === 0 ? 'bg-[#D02020]' : 'bg-[#1040C0]'
+                            index % 2 === 0 ? 'bg-[#F35D68]' : 'bg-[#52C6BF]'
                           }`}
                         />
                       ))}
@@ -553,7 +553,7 @@ export default function AcmeApp() {
                     <div className="mt-5 flex items-center gap-3 border-t-2 border-black pt-4">
                       <div
                         className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-black text-xs font-black ${
-                          index % 3 === 0 ? 'bg-[#D02020] text-white' : index % 3 === 1 ? 'bg-[#F0C020]' : 'bg-[#1040C0] text-white'
+                          index % 3 === 0 ? 'bg-[#F35D68] text-white' : index % 3 === 1 ? 'bg-[#F1BB36]' : 'bg-[#52C6BF] text-white'
                         }`}
                       >
                         {item.name.split(' ').map((n) => n[0]).join('')}
@@ -571,7 +571,7 @@ export default function AcmeApp() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="border-b-4 border-black bg-[#F4F1E8] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <section id="pricing" className="border-b-4 border-black bg-[#F5F1E7] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-7xl">
             <SectionHeading
               eyebrow="Pricing"
@@ -585,11 +585,11 @@ export default function AcmeApp() {
                 <Reveal key={plan.name} delay={idx * 140} className="h-full">
                   <article
                     className={`group relative flex h-full flex-col border-4 border-black p-6 shadow-[8px_8px_0px_0px_black] transition-all duration-300 hover:-translate-y-2 hover:shadow-[14px_14px_0px_0px_black] ${
-                      plan.tone === 'highlight' ? 'bg-[#F0C020]' : 'bg-white'
+                      plan.tone === 'highlight' ? 'bg-[#F1BB36]' : 'bg-white'
                     } ${plan.tone === 'highlight' ? 'lg:-translate-y-4' : ''}`}
                   >
                     {plan.tone === 'highlight' && (
-                      <span className="acme-badge absolute -right-3 -top-3 inline-flex items-center gap-2 border-2 border-black bg-[#D02020] px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white shadow-[3px_3px_0px_0px_black]">
+                      <span className="acme-badge absolute -right-3 -top-3 inline-flex items-center gap-2 border-2 border-black bg-[#F35D68] px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white shadow-[3px_3px_0px_0px_black]">
                         <span className="h-1.5 w-1.5 rounded-full bg-white acme-pulse" />
                         Most popular
                       </span>
@@ -607,7 +607,7 @@ export default function AcmeApp() {
                           className="flex items-start gap-2 transition-transform duration-300 hover:translate-x-1"
                           style={{ transitionDelay: `${fIdx * 30}ms` }}
                         >
-                          <span className="mt-1 inline-block h-2.5 w-2.5 border border-black bg-[#D02020]" />
+                          <span className="mt-1 inline-block h-2.5 w-2.5 border border-black bg-[#F35D68]" />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -641,7 +641,7 @@ export default function AcmeApp() {
               {faqItems.map((item, index) => (
                 <Reveal key={item} delay={index * 80}>
                   <article
-                    className={`group border-4 border-black bg-[#F4F1E8] shadow-[6px_6px_0px_0px_black] transition-all duration-200 ease-out hover:shadow-[8px_8px_0px_0px_black] ${
+                    className={`group border-4 border-black bg-[#F5F1E7] shadow-[6px_6px_0px_0px_black] transition-all duration-200 ease-out hover:shadow-[8px_8px_0px_0px_black] ${
                       closingFaqIndex === index ? 'translate-y-[-2px] scale-[0.995]' : ''
                     } ${openFaqIndex === index ? 'bg-white' : ''}`}
                   >
@@ -654,7 +654,7 @@ export default function AcmeApp() {
                       <span className="flex items-center gap-4">
                         <span
                           className={`flex h-7 w-7 items-center justify-center border-2 border-black text-[10px] transition-colors duration-200 ${
-                            openFaqIndex === index ? 'bg-[#D02020] text-white' : 'bg-white'
+                            openFaqIndex === index ? 'bg-[#F35D68] text-white' : 'bg-white'
                           }`}
                         >
                           {String(index + 1).padStart(2, '0')}
@@ -663,7 +663,7 @@ export default function AcmeApp() {
                       </span>
                       <span
                         className={`flex h-7 w-7 items-center justify-center border-2 border-black text-base transition-all duration-300 ${
-                          openFaqIndex === index ? 'rotate-45 bg-[#F0C020]' : 'bg-white'
+                          openFaqIndex === index ? 'rotate-45 bg-[#F1BB36]' : 'bg-white'
                         }`}
                       >
                         +
@@ -684,14 +684,14 @@ export default function AcmeApp() {
         </section>
 
         {/* CTA */}
-        <section className="relative overflow-hidden border-b-4 border-black bg-[#F0C020] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <section className="relative overflow-hidden border-b-4 border-black bg-[#F1BB36] px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-10 bottom-0 h-44 w-44 rounded-full border-4 border-black bg-[#D02020] opacity-90 acme-float-slow"
+            className="pointer-events-none absolute -left-10 bottom-0 h-44 w-44 rounded-full border-4 border-black bg-[#F35D68] opacity-90 acme-float-slow"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute right-0 top-0 h-44 w-44 border-l-4 border-b-4 border-black bg-[#1040C0] acme-float-fast"
+            className="pointer-events-none absolute right-0 top-0 h-44 w-44 border-l-4 border-b-4 border-black bg-[#52C6BF] acme-float-fast"
             style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
           />
           <div
@@ -729,10 +729,10 @@ export default function AcmeApp() {
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="h-3 w-3 rounded-full bg-[#D02020] acme-pulse" />
-                <span className="h-3 w-3 rounded-none bg-[#1040C0] acme-pulse" style={{ animationDelay: '0.3s' }} />
+                <span className="h-3 w-3 rounded-full bg-[#F35D68] acme-pulse" />
+                <span className="h-3 w-3 rounded-none bg-[#52C6BF] acme-pulse" style={{ animationDelay: '0.3s' }} />
                 <span
-                  className="h-3 w-3 bg-[#F0C020] acme-pulse"
+                  className="h-3 w-3 bg-[#F1BB36] acme-pulse"
                   style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animationDelay: '0.6s' }}
                 />
               </div>
@@ -744,15 +744,15 @@ export default function AcmeApp() {
 
             {footerColumns.map((column) => (
               <div key={column.title}>
-                <h3 className="text-xs font-black uppercase tracking-[0.35em] text-[#F0C020]">{column.title}</h3>
+                <h3 className="text-xs font-black uppercase tracking-[0.35em] text-[#F1BB36]">{column.title}</h3>
                 <ul className="mt-4 space-y-3 text-sm text-white/80">
                   {column.links.map((item) => (
                     <li key={item}>
                       <a
                         href="#"
-                        className="group inline-flex items-center gap-2 transition-colors duration-200 hover:text-[#F0C020]"
+                        className="group inline-flex items-center gap-2 transition-colors duration-200 hover:text-[#F1BB36]"
                       >
-                        <span className="h-[2px] w-0 bg-[#F0C020] transition-all duration-300 group-hover:w-4" />
+                        <span className="h-[2px] w-0 bg-[#F1BB36] transition-all duration-300 group-hover:w-4" />
                         {item}
                       </a>
                     </li>
@@ -765,7 +765,7 @@ export default function AcmeApp() {
           <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/15 pt-6 text-xs uppercase tracking-[0.28em] text-white/60 sm:flex-row sm:items-center">
             <span>2026 Northstar Systems. All rights reserved.</span>
             <span className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D02020] acme-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#F35D68] acme-pulse" />
               Crafted with intention
             </span>
           </div>
