@@ -47,7 +47,7 @@ const fragmentShader = `
 
     vec3 ice = mix(vec3(0.82, 0.94, 1.0), vec3(0.67, 0.70, 0.94), facet * 0.8);
     ice = mix(ice, vec3(0.46, 0.91, 0.88), smoothstep(0.08, 0.34, p.x + 0.1) * 0.38);
-    ice = mix(ice, vec3(1.0, 0.72, 0.78), 1.0 - smoothstep(-0.16, 0.20, p.x - p.y * 0.35) * 0.24);
+    ice = mix(ice, vec3(1.0, 0.72, 0.78), (1.0 - smoothstep(-0.16, 0.20, p.x - p.y * 0.35)) * 0.24);
     ice += vec3(0.28, 0.23, 0.35) * seams * body * 0.28;
 
     float glint = pow(max(0.0, 1.0 - abs(p.x * 1.6 + p.y * 0.72 - 0.02 - uPointer.x * 0.06)), 28.0);
@@ -196,8 +196,12 @@ export default function WebGLIceField() {
     observer.observe(host)
 
     const onVisibility = () => document.visibilityState === 'visible' ? start() : stop()
-    const onMotionChange = (event) => { if (event.matches) stop() }
-    const onViewportChange = (event) => { if (event.matches) stop() }
+    const clearCanvas = () => {
+      gl.clearColor(0, 0, 0, 0)
+      gl.clear(gl.COLOR_BUFFER_BIT)
+    }
+    const onMotionChange = (event) => { if (event.matches) { stop(); clearCanvas() } else start() }
+    const onViewportChange = (event) => { if (event.matches) { stop(); clearCanvas() } else start() }
 
     host.addEventListener('pointermove', onPointerMove, { passive: true })
     host.addEventListener('pointerleave', onPointerLeave, { passive: true })
