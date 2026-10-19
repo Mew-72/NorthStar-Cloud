@@ -38,8 +38,7 @@ export default function Hero() {
     }
 
     runScramble()
-    scrambleLoopTimerRef.current = setInterval(runScramble, 4000)
-
+    scrambleLoopTimerRef.current = setInterval(runScramble, 6000)
     return () => {
       if (scrambleFrameTimerRef.current) clearInterval(scrambleFrameTimerRef.current)
       if (scrambleLoopTimerRef.current) clearInterval(scrambleLoopTimerRef.current)
@@ -48,228 +47,142 @@ export default function Hero() {
 
   const handleMouseMove = (e) => {
     const node = stageRef.current
-    if (!node) return
+    if (!node || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const rect = node.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    setParallax({ x, y })
+    setParallax({
+      x: (e.clientX - rect.left) / rect.width - 0.5,
+      y: (e.clientY - rect.top) / rect.height - 0.5,
+    })
   }
 
   const handleMouseLeave = () => setParallax({ x: 0, y: 0 })
 
   return (
-    <section className="relative min-h-screen overflow-hidden border-b-4 border-black bg-white">
-      <div className="grid w-full lg:min-h-[calc(100vh-72px)] lg:grid-cols-[1.05fr_1fr]">
-        {/* Left: Content */}
-        <div className="relative flex flex-col justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-          {/* Animated grid backdrop */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-[0.07]"
-            style={{
-              backgroundImage:
-                'linear-gradient(to right, #111 1px, transparent 1px), linear-gradient(to bottom, #111 1px, transparent 1px)',
-              backgroundSize: '56px 56px',
-              maskImage: 'radial-gradient(ellipse at 30% 40%, black 30%, transparent 75%)',
-            }}
-          />
+    <section className="relative overflow-hidden border-b border-black/10 bg-[#F5F1E7]">
+      <div className="grid w-full lg:min-h-[calc(100vh-76px)] lg:grid-cols-[1.02fr_.98fr]">
+        <div className="relative flex flex-col justify-center overflow-hidden px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24 xl:px-16">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[.08]" style={{
+            backgroundImage: 'linear-gradient(to right, #181817 1px, transparent 1px), linear-gradient(to bottom, #181817 1px, transparent 1px)',
+            backgroundSize: '44px 44px',
+            maskImage: 'linear-gradient(135deg, black, transparent 78%)',
+          }} />
+          <span aria-hidden="true" className="acme-float-slow pointer-events-none absolute -left-7 top-20 h-16 w-16 rounded-full bg-[#F1BB36]" />
+          <span aria-hidden="true" className="acme-float-fast pointer-events-none absolute right-8 top-24 h-7 w-7 rotate-45 bg-[#F35D68]" />
 
-          {/* Floating accent shapes */}
-          <span
-            aria-hidden="true"
-            className="acme-float-slow pointer-events-none absolute -left-6 top-16 h-16 w-16 rotate-12 border-4 border-black bg-[#F0C020] shadow-[6px_6px_0px_0px_black]"
-          />
-          <span
-            aria-hidden="true"
-            className="acme-float-fast pointer-events-none absolute right-10 top-24 h-10 w-10 rounded-full border-4 border-black bg-[#1040C0]"
-          />
+          <div className="relative z-10 max-w-2xl">
+            <p className="mb-7 inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.18em] text-[#59574f] sm:text-[11px]">
+              <span className="relative inline-flex h-2 w-2">
+                <span className="absolute inset-0 rounded-full bg-[#F35D68] acme-ping" />
+                <span className="relative h-2 w-2 rounded-full bg-[#F35D68]" />
+              </span>
+              <span className="acme-tagline-fixed">{heroTagline}</span>
+              <span className="hidden text-black/30 sm:inline">/ 01</span>
+            </p>
 
-          <div className="relative max-w-xl space-y-8">
-            <div className="space-y-5">
-              <p className="inline-flex items-center gap-3 border-2 border-black bg-[#F4F1E8] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.35em] text-[#111] shadow-[3px_3px_0px_0px_black]">
-                <span className="relative inline-flex h-2 w-2">
-                  <span className="absolute inset-0 rounded-full bg-[#D02020] acme-ping" />
-                  <span className="relative inline-block h-2 w-2 rounded-full bg-[#D02020]" />
+            <h1 className="max-w-3xl text-[clamp(3.6rem,7.4vw,7.6rem)] font-bold uppercase leading-[.82] tracking-[-.085em]">
+              {HEADLINE_WORDS.map((word, idx) => (
+                <span key={word} className={`mr-[.16em] inline-block transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${mounted ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-5 opacity-0 blur-sm'} `} style={{ transitionDelay: `${100 + idx * 75}ms` }}>
+                  {word === 'command' ? (
+                    <span className="relative inline-block">
+                      <span className="relative z-10">{word}</span>
+                      <span aria-hidden="true" className="absolute inset-x-0 bottom-[.04em] -z-0 h-[.16em] -rotate-1 bg-[#F1BB36]" />
+                    </span>
+                  ) : word}
                 </span>
-                <span className="acme-tagline-fixed">{heroTagline}</span>
-              </p>
+              ))}
+            </h1>
 
-              <h1 className="max-w-xl text-5xl font-black uppercase leading-[0.88] tracking-tighter sm:text-6xl lg:text-7xl xl:text-[5.4rem]">
-                {HEADLINE_WORDS.map((word, idx) => (
-                  <span
-                    key={`${word}-${idx}`}
-                    className={`mr-3 inline-block transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      mounted ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-6 opacity-0 blur-sm'
-                    } ${word === 'command' ? 'relative' : ''}`}
-                    style={{ transitionDelay: `${120 + idx * 80}ms` }}
-                  >
-                    {word === 'command' ? (
-                      <span className="relative inline-block">
-                        <span className="relative z-10">{word}</span>
-                        <span
-                          aria-hidden="true"
-                          className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-[#F0C020]"
-                        />
-                      </span>
-                    ) : (
-                      word
-                    )}
-                  </span>
-                ))}
-              </h1>
-
-              <p
-                className={`max-w-md border-l-4 border-[#D02020] pl-4 text-base leading-relaxed text-[#333] transition-all duration-700 ease-out sm:text-lg ${
-                  mounted ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
-                }`}
-                style={{ transitionDelay: '700ms' }}
-              >
-                A unified operations platform for planning, execution, and reporting.
-                Built for speed, clarity, and scale.
+            <div className="mt-8 flex max-w-xl items-start gap-4 sm:mt-10">
+              <span className="mt-2 h-10 w-[3px] shrink-0 bg-[#F35D68]" />
+              <p className={`max-w-md text-base leading-relaxed text-[#626057] transition-all duration-700 sm:text-lg ${mounted ? 'translate-x-0 opacity-100' : '-translate-x-3 opacity-0'}`} style={{ transitionDelay: '620ms' }}>
+                A calmer command center for planning, execution, and reporting. Get the whole operation moving in the same direction.
               </p>
             </div>
 
-            <div
-              className={`flex flex-col gap-4 transition-all duration-700 ease-out sm:flex-row ${
-                mounted ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}
-              style={{ transitionDelay: '820ms' }}
-            >
-              <ActionButton variant="primary">
-                Start free trial
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            <div className={`mt-8 flex flex-col gap-3 transition-all duration-700 sm:flex-row sm:items-center ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'}`} style={{ transitionDelay: '740ms' }}>
+              <ActionButton variant="primary" className="justify-center px-6 py-3.5 text-xs">
+                Start free trial <span aria-hidden="true" className="text-base">↗</span>
               </ActionButton>
-              <ActionButton variant="outline">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inset-0 rounded-full bg-[#D02020] acme-ping" />
-                  <span className="relative inline-block h-2 w-2 rounded-full bg-[#D02020]" />
-                </span>
-                Watch a demo
+              <ActionButton variant="outline" className="justify-center px-6 py-3.5 text-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-[9px]">▶</span>
+                Watch the overview
               </ActionButton>
             </div>
 
-            <div
-              className={`flex items-center gap-4 pt-2 text-xs font-black uppercase tracking-[0.24em] text-[#555] transition-all duration-700 ease-out ${
-                mounted ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}
-              style={{ transitionDelay: '940ms' }}
-            >
+            <div className={`mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-black/10 pt-5 transition-all duration-700 ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'}`} style={{ transitionDelay: '860ms' }}>
               <div className="flex -space-x-2">
-                <span className="h-9 w-9 rounded-full border-2 border-black bg-[#D02020] acme-dot-loader acme-dot-delay-1" />
-                <span className="h-9 w-9 rounded-full border-2 border-black bg-[#F0C020] acme-dot-loader acme-dot-delay-2" />
-                <span className="h-9 w-9 rounded-full border-2 border-black bg-[#1040C0] acme-dot-loader acme-dot-delay-3" />
-                <span className="h-9 w-9 rounded-full border-2 border-black bg-black text-[10px] flex items-center justify-center text-white acme-dot-loader acme-dot-delay-4">+9k</span>
+                <span className="h-8 w-8 rounded-full border-2 border-[#F5F1E7] bg-[#F35D68]" />
+                <span className="h-8 w-8 rounded-full border-2 border-[#F5F1E7] bg-[#52C6BF]" />
+                <span className="h-8 w-8 rounded-full border-2 border-[#F5F1E7] bg-[#F1BB36]" />
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#F5F1E7] bg-[#181817] text-[9px] font-semibold text-white">+9k</span>
               </div>
-              <p>Trusted by 12,000+ operators and delivery teams</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#77756E]">Built for teams that keep things moving</p>
+              <span className="hidden text-[#b6b1a6] sm:inline">✳</span>
+              <span className="font-mono text-[10px] text-[#77756E]">01 — 04 / NORTHSTAR</span>
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-6 left-4 hidden items-center gap-3 sm:left-6 lg:flex lg:left-10">
-            <span className="text-[10px] font-black uppercase tracking-[0.35em] text-[#666]">Scroll</span>
-            <span className="relative inline-block h-10 w-[2px] overflow-hidden bg-black/15">
-              <span className="absolute left-0 top-0 h-1/2 w-full bg-[#D02020] acme-scroll-line" />
+          <div className="absolute bottom-7 left-5 hidden items-center gap-3 sm:left-8 lg:flex xl:left-12">
+            <span className="font-mono text-[9px] uppercase tracking-[.2em] text-[#77756E]">Scroll to explore</span>
+            <span className="relative inline-block h-8 w-px overflow-hidden bg-black/15">
+              <span className="absolute left-0 top-0 h-1/2 w-full bg-[#F35D68] acme-scroll-line" />
             </span>
           </div>
         </div>
 
-        {/* Right: Animated stage */}
-        <div
-          ref={stageRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="relative min-h-[42rem] overflow-hidden border-t-4 border-black bg-[#1040C0] lg:border-t-0 lg:border-l-4"
-        >
-          {/* Animated radial dots */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 opacity-30 acme-grid-drift"
-            style={{
-              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
-            }}
-          />
+        <div ref={stageRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="relative min-h-[34rem] overflow-hidden border-t border-black/10 bg-[#52C6BF] lg:min-h-0 lg:border-l lg:border-t-0">
+          <div aria-hidden="true" className="absolute inset-0 opacity-30 acme-grid-drift" style={{ backgroundImage: 'radial-gradient(circle, rgba(24,24,23,.8) 1px, transparent 1.3px)', backgroundSize: '19px 19px' }} />
+          <div aria-hidden="true" className="absolute -right-16 -top-20 h-72 w-72 rounded-full bg-[#F5F1E7]" />
+          <div aria-hidden="true" className="absolute -bottom-24 -left-12 h-72 w-72 rounded-full bg-[#F35D68]" />
 
-          {/* Diagonal sweep band */}
-          <div
-            aria-hidden="true"
-            className="acme-sweep pointer-events-none absolute -left-1/3 top-1/2 h-[140%] w-[180%] -translate-y-1/2 rotate-[-18deg]"
-          />
-
-          {/* Floating geometry with parallax */}
-          <div
-            className="absolute left-1/2 top-1/2 h-56 w-56 border-4 border-black bg-[#D02020] shadow-[14px_14px_0px_0px_black] acme-geo-1"
-            style={{
-              transform: `translate(calc(-50% + ${parallax.x * 36}px), calc(-50% + ${parallax.y * 36}px)) rotate(45deg)`,
-              transition: 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-            }}
-          />
-          <div
-            className="absolute left-1/2 top-1/2 h-36 w-36 rounded-full border-4 border-black bg-[#F0C020] shadow-[10px_10px_0px_0px_black] acme-geo-2"
-            style={{
-              transform: `translate(calc(-50% + ${parallax.x * -56}px), calc(-50% + ${parallax.y * -56}px))`,
-              transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
-            }}
-          />
-          <div
-            className="absolute left-[56%] top-[48%] flex h-36 w-36 items-center justify-center border-4 border-black bg-white shadow-[10px_10px_0px_0px_black] acme-geo-3"
-            style={{
-              transform: `translate(calc(-50% + ${parallax.x * 80}px), calc(-50% + ${parallax.y * 60}px))`,
-              transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
-            }}
-          >
-            <div
-              className="h-0 w-0 border-l-[18px] border-l-transparent border-r-[18px] border-r-transparent border-b-[30px] border-b-black"
-              style={{ transform: 'translateY(-2px)' }}
-            />
+          <div className="absolute left-6 top-6 z-20 flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[.18em] text-[#181817] sm:left-8 sm:top-8">
+            <span className="h-2 w-2 rounded-full bg-[#F35D68]" /> Northstar / workspace preview
           </div>
+          <div className="absolute right-6 top-6 z-20 font-mono text-[9px] text-black/60 sm:right-8 sm:top-8">FIG. 001 — LIVE SYSTEM</div>
 
-          {/* Mini cards floating */}
-          <div
-            className="absolute left-6 top-10 w-44 border-2 border-black bg-white p-3 shadow-[6px_6px_0px_0px_black] acme-card-float-1"
-            style={{ transform: `translate(${parallax.x * 14}px, ${parallax.y * 14}px)`, transition: 'transform 0.5s ease-out' }}
-          >
-            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#D02020]">Live</p>
-            <p className="mt-1 text-xs font-black uppercase tracking-tighter">Sprint 14</p>
-            <div className="mt-2 h-1.5 w-full bg-black/10">
-              <div className="h-full w-3/4 bg-[#1040C0] acme-bar-fill" />
+          <div className="absolute left-1/2 top-1/2 h-[min(72vw,440px)] w-[min(72vw,440px)] -translate-x-1/2 -translate-y-1/2 sm:h-[430px] sm:w-[430px]">
+            <div className="absolute left-1/2 top-1/2 h-[78%] w-[78%] border border-[#181817]/50" style={{ transform: `translate(calc(-50% + ${parallax.x * 24}px), calc(-50% + ${parallax.y * 24}px)) rotate(45deg)`, transition: 'transform .7s cubic-bezier(.22,1,.36,1)' }} />
+            <div className="absolute left-1/2 top-1/2 h-[64%] w-[64%] rounded-full border border-[#181817]/60" style={{ transform: `translate(calc(-50% + ${parallax.x * -28}px), calc(-50% + ${parallax.y * -24}px))`, transition: 'transform .8s cubic-bezier(.22,1,.36,1)' }} />
+            <div className="acme-geo-1 absolute left-1/2 top-1/2 h-[52%] w-[52%] bg-[#F35D68]" style={{ transform: `translate(calc(-50% + ${parallax.x * 34}px), calc(-50% + ${parallax.y * 34}px)) rotate(45deg)`, transition: 'transform .6s cubic-bezier(.22,1,.36,1)' }} />
+            <div className="acme-geo-2 absolute left-1/2 top-1/2 h-[34%] w-[34%] rounded-full bg-[#F1BB36]" style={{ transform: `translate(calc(-50% + ${parallax.x * -42}px), calc(-50% + ${parallax.y * -34}px))`, transition: 'transform .7s cubic-bezier(.22,1,.36,1)' }} />
+            <div className="acme-geo-3 absolute left-[55%] top-[49%] flex h-[27%] w-[27%] items-center justify-center border border-[#181817] bg-[#F5F1E7]" style={{ transform: `translate(calc(-50% + ${parallax.x * 52}px), calc(-50% + ${parallax.y * 44}px))`, transition: 'transform .7s cubic-bezier(.22,1,.36,1)' }}>
+              <div className="h-0 w-0 border-b-[24px] border-l-[14px] border-r-[14px] border-b-[#181817] border-l-transparent border-r-transparent" />
             </div>
           </div>
 
-          <div
-            className="absolute bottom-20 right-8 w-44 border-2 border-black bg-white p-3 shadow-[6px_6px_0px_0px_black] acme-card-float-2"
-            style={{ transform: `translate(${parallax.x * -16}px, ${parallax.y * -10}px)`, transition: 'transform 0.5s ease-out' }}
-          >
-            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#1040C0]">Uptime</p>
-            <p className="mt-1 text-xl font-black tracking-tighter">99.95%</p>
-            <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[#666]">Last 90 days</p>
+          <div className="acme-card-float-1 absolute left-5 top-[22%] z-20 w-40 border border-black/10 bg-[#F5F1E7] p-4 shadow-[0_12px_34px_rgba(24,24,23,.12)] sm:left-8 sm:w-48">
+            <div className="flex items-center justify-between">
+              <p className="font-mono text-[9px] uppercase tracking-[.12em] text-[#77756E]">Sprint 014</p>
+              <span className="h-2 w-2 rounded-full bg-[#52C6BF]" />
+            </div>
+            <p className="mt-3 font-['Space_Grotesk'] text-2xl font-semibold tracking-[-.06em]">On track<span className="text-[#F35D68]">.</span></p>
+            <div className="mt-3 h-1.5 rounded-full bg-black/10"><div className="acme-bar-fill h-full rounded-full bg-[#F35D68]" /></div>
+            <p className="mt-2 text-[9px] uppercase tracking-[.13em] text-[#77756E]">75% of milestones cleared</p>
           </div>
 
-          <div className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full border-2 border-black bg-black px-4 py-2 text-[10px] font-black uppercase tracking-[0.35em] text-white shadow-[4px_4px_0px_0px_white]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#F0C020] acme-pulse" />
-            Live preview
+          <div className="acme-card-float-2 absolute bottom-[18%] right-5 z-20 w-40 border border-black/10 bg-[#F5F1E7] p-4 shadow-[0_12px_34px_rgba(24,24,23,.12)] sm:right-8 sm:w-48">
+            <p className="font-mono text-[9px] uppercase tracking-[.12em] text-[#77756E]">System health</p>
+            <p className="mt-2 font-['Space_Grotesk'] text-3xl font-semibold tracking-[-.07em]">99.95<span className="text-base">%</span></p>
+            <div className="mt-3 flex items-end gap-1">
+              {[35, 58, 46, 70, 54, 82, 66, 90, 74, 100, 80, 94].map((height, i) => <span key={i} className="flex-1 rounded-t-sm bg-[#52C6BF]" style={{ height: `${height * .28}px`, opacity: .45 + i * .045 }} />)}
+            </div>
           </div>
+
+          <div className="absolute bottom-6 left-6 z-20 flex items-center gap-3 text-[9px] font-semibold uppercase tracking-[.16em] text-black/70 sm:bottom-8 sm:left-8">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-black/20 text-sm">↗</span>
+            <span>Clarity in every direction</span>
+          </div>
+          <div className="absolute bottom-6 right-6 z-20 font-mono text-[9px] text-black/60 sm:bottom-8 sm:right-8">12.04 / NSC</div>
         </div>
       </div>
 
-      {/* Bottom marquee */}
-      <div className="relative border-t-4 border-black bg-black text-white">
-        <div className="acme-marquee flex gap-12 whitespace-nowrap py-3 text-xs font-black uppercase tracking-[0.35em]">
+      <div className="relative overflow-hidden border-t border-black/10 bg-[#181817] text-[#F5F1E7]">
+        <div className="acme-marquee flex gap-10 whitespace-nowrap py-4 text-[10px] font-medium uppercase tracking-[.18em] sm:gap-14">
           {Array.from({ length: 2 }).map((_, dup) => (
-            <div key={dup} className="flex shrink-0 items-center gap-12">
-              {[
-                'Sprint planning',
-                'Live workflows',
-                'Cross-functional ops',
-                'Audit-ready logs',
-                'Realtime telemetry',
-                'Global rollout',
-                'Permissioned governance',
-                'Incident playbooks',
-              ].map((label) => (
+            <div key={dup} className="flex shrink-0 items-center gap-10 sm:gap-14">
+              {['Sprint planning', 'Live workflows', 'Cross-functional ops', 'Audit-ready logs', 'Realtime telemetry', 'Global rollout', 'Clear ownership', 'Incident playbooks'].map((label) => (
                 <span key={`${dup}-${label}`} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-[#F0C020]" />
-                  {label}
+                  <span className="h-2 w-2 rounded-full bg-[#F1BB36]" />{label}
                 </span>
               ))}
             </div>
