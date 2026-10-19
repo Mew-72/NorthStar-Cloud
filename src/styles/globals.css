@@ -121,3 +121,24 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
 }
+
+
+/* Editorial UI polish across the existing landing page */
+[class~="border-4"],
+[class~="border-t-4"],
+[class~="border-r-4"],
+[class~="border-b-4"],
+[class~="border-l-4"] {
+  border-width: 1px !important;
+}
+[class~="border-black"] { border-color: var(--line) !important; }
+[class~="border-t-4"] { border-top-color: var(--line) !important; }
+[class~="border-r-4"] { border-right-color: var(--line) !important; }
+[class~="border-b-4"] { border-bottom-color: var(--line) !important; }
+[class~="border-l-4"] { border-left-color: var(--line) !important; }
+
+/* Replace the old hard offset shadows with softer, quieter elevation. */
+[class*="shadow-["] {
+  box-shadow: 0 10px 30px rgba(24, 24, 23, .07) !important;
+}
+[class~="bg-white"] { background-color: #fffdf8; }
