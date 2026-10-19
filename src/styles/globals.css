@@ -1,298 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Outfit', sans-serif;
+:root {
+  --paper: #f5f1e7;
+  --ink: #181817;
+  --muted: #77756e;
+  --coral: #f35d68;
+  --teal: #52c6bf;
+  --mustard: #f1bb36;
+  --line: rgba(24, 24, 23, .16);
 }
 
-@layer base {
-  body {
-    @apply bg-[#F0F0F0] text-[#121212] font-medium;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-black uppercase tracking-tighter;
-  }
+* { font-family: 'DM Sans', sans-serif; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  @apply font-medium;
+  background: var(--paper);
+  color: var(--ink);
+  overscroll-behavior-y: auto;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  @apply font-bold tracking-[-0.06em];
+}
+::selection { background: var(--mustard); color: var(--ink); }
 
 @layer components {
-  .bauhaus-border {
-    @apply border-4 border-black;
-  }
-
-  .bauhaus-border-2 {
-    @apply border-2 border-black;
-  }
-
-  .bauhaus-shadow-md {
-    @apply shadow-[4px_4px_0px_0px_black];
-  }
-
-  .bauhaus-shadow-lg {
-    @apply shadow-[8px_8px_0px_0px_black];
-  }
-
+  .bauhaus-border { @apply border border-black/15; }
+  .bauhaus-border-2 { @apply border border-black/15; }
+  .bauhaus-shadow-md { box-shadow: 4px 4px 0 rgba(24,24,23,.1); }
+  .bauhaus-shadow-lg { box-shadow: 8px 8px 0 rgba(24,24,23,.1); }
   .bauhaus-card {
-    @apply bg-white border-4 border-black shadow-[8px_8px_0px_0px_black]
-      hover:-translate-y-1 transition-transform duration-200 ease-out;
+    @apply bg-white border border-black/10 transition-transform duration-300 ease-out;
+    box-shadow: 0 8px 32px rgba(24,24,23,.04);
   }
-
   .dot-grid {
-    background-image: radial-gradient(circle, #121212 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(24,24,23,.45) 1px, transparent 1.2px);
     background-size: 20px 20px;
   }
 }
 
-/* ========== Hero & Decorative Animations ========== */
-
+.acme-tagline-fixed { font-family: 'DM Mono', monospace; font-variant-numeric: tabular-nums; letter-spacing: .12em; }
+.acme-geo-1 { animation: acmeGeoOne 18s ease-in-out infinite; }
+.acme-geo-2 { animation: acmeGeoTwo 15s ease-in-out infinite; }
+.acme-geo-3 { animation: acmeGeoThree 17s ease-in-out infinite; }
 @keyframes acmeGeoOne {
-  0% { transform: translate(-50%, -50%) rotate(45deg); }
-  20% { transform: translate(-47%, -53%) rotate(56deg); }
-  45% { transform: translate(-54%, -46%) rotate(72deg); }
-  70% { transform: translate(-48%, -50%) rotate(38deg); }
-  100% { transform: translate(-50%, -50%) rotate(45deg); }
+  0%,100% { transform: translate(-50%,-50%) rotate(45deg); }
+  50% { transform: translate(-46%,-54%) rotate(60deg); }
 }
-
 @keyframes acmeGeoTwo {
-  0% { transform: translate(-50%, -50%) translate(0, -180px) scale(1); }
-  25% { transform: translate(-50%, -50%) translate(160px, -40px) scale(1.08); }
-  50% { transform: translate(-50%, -50%) translate(0, 160px) scale(0.94); }
-  75% { transform: translate(-50%, -50%) translate(-160px, -40px) scale(1.08); }
-  100% { transform: translate(-50%, -50%) translate(0, -180px) scale(1); }
+  0%,100% { transform: translate(-50%,-50%) translate(0,-100px); }
+  50% { transform: translate(-50%,-50%) translate(100px,60px); }
 }
-
 @keyframes acmeGeoThree {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  30% { transform: translate(-44%, -56%) rotate(-12deg); }
-  60% { transform: translate(-54%, -46%) rotate(10deg); }
-  100% { transform: translate(-50%, -50%) rotate(0deg); }
+  0%,100% { transform: translate(-50%,-50%) rotate(0); }
+  50% { transform: translate(-46%,-52%) rotate(-10deg); }
 }
-
-.acme-geo-1 { animation: acmeGeoOne 11s ease-in-out infinite; }
-.acme-geo-2 { animation: acmeGeoTwo 7.5s ease-in-out infinite; }
-.acme-geo-3 { animation: acmeGeoThree 8.5s ease-in-out infinite; }
-
-/* Dot loaders in hero avatar stack */
-@keyframes acmeDotLoader {
-  0%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-7px); }
-  60% { transform: translateY(-3px); }
-}
+@keyframes acmeDotLoader { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-5px); } }
 .acme-dot-loader { animation: acmeDotLoader 3s ease-in-out infinite; }
 .acme-dot-delay-1 { animation-delay: 0s; }
-.acme-dot-delay-2 { animation-delay: 0.2s; }
-.acme-dot-delay-3 { animation-delay: 0.4s; }
-.acme-dot-delay-4 { animation-delay: 0.6s; }
-
-/* Tagline pulse */
-.acme-tagline-fixed {
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: 'tnum';
-  letter-spacing: 0.35em;
-}
-
-/* Hero stage drift */
-@keyframes acmeGridDrift {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
-}
-.acme-grid-drift { animation: acmeGridDrift 16s linear infinite; }
-
-/* Diagonal sweep band */
-@keyframes acmeSweep {
-  0% { transform: rotate(-18deg) translateX(-100%); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: rotate(-18deg) translateX(100%); opacity: 0; }
-}
-.acme-sweep {
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0.32) 50%, rgba(255, 255, 255, 0.18) 55%, transparent 100%);
-  animation: acmeSweep 6s ease-in-out infinite;
-}
-
-/* Floating shapes */
-@keyframes acmeFloatSlow {
-  0%, 100% { transform: translateY(0) rotate(12deg); }
-  50% { transform: translateY(-14px) rotate(8deg); }
-}
-@keyframes acmeFloatFast {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.acme-float-slow { animation: acmeFloatSlow 5.5s ease-in-out infinite; }
-.acme-float-fast { animation: acmeFloatFast 3.8s ease-in-out infinite; }
-
-/* Hero floating mini cards */
-@keyframes acmeCardFloat1 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes acmeCardFloat2 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(8px); }
-}
-.acme-card-float-1 { animation: acmeCardFloat1 4.5s ease-in-out infinite; }
-.acme-card-float-2 { animation: acmeCardFloat2 5s ease-in-out infinite; }
-
-/* Bar fill in floating card */
-@keyframes acmeBarFill {
-  0% { width: 0%; }
-  100% { width: 75%; }
-}
+.acme-dot-delay-2 { animation-delay: .2s; }
+.acme-dot-delay-3 { animation-delay: .4s; }
+.acme-dot-delay-4 { animation-delay: .6s; }
+@keyframes acmeGridDrift { from { background-position: 0 0; } to { background-position: 40px 40px; } }
+.acme-grid-drift { animation: acmeGridDrift 28s linear infinite; }
+@keyframes acmeSweep { 0% { transform: rotate(-18deg) translateX(-100%); opacity:0 } 25% {opacity:.5} 100% {transform:rotate(-18deg) translateX(100%);opacity:0} }
+.acme-sweep { background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent); animation: acmeSweep 9s ease-in-out infinite; }
+@keyframes acmeFloatSlow { 0%,100% { transform: translateY(0) rotate(12deg) } 50% { transform: translateY(-10px) rotate(8deg) } }
+@keyframes acmeFloatFast { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+.acme-float-slow { animation: acmeFloatSlow 7s ease-in-out infinite; }
+.acme-float-fast { animation: acmeFloatFast 5.5s ease-in-out infinite; }
+@keyframes acmeCardFloat1 { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+@keyframes acmeCardFloat2 { 0%,100% { transform: translateY(0) } 50% { transform: translateY(6px) } }
+.acme-card-float-1 { animation: acmeCardFloat1 7s ease-in-out infinite; }
+.acme-card-float-2 { animation: acmeCardFloat2 8s ease-in-out infinite; }
+@keyframes acmeBarFill { from { width:0 } to { width:75% } }
 .acme-bar-fill { animation: acmeBarFill 1.6s ease-out forwards; }
+@keyframes acmeEyebrow { 0%,100% { opacity:1; transform:scaleX(1) } 50% { opacity:.65; transform:scaleX(1.2) } }
+.acme-eyebrow-pulse { transform-origin:left center; animation: acmeEyebrow 3s ease-in-out infinite; }
+@keyframes acmeScrollLine { 0% { transform:translateY(-100%) } 100% { transform:translateY(200%) } }
+.acme-scroll-line { animation: acmeScrollLine 2.7s ease-in-out infinite; }
+@keyframes acmeMarquee { 0% { transform:translateX(0) } 100% { transform:translateX(-50%) } }
+.acme-marquee { animation: acmeMarquee 45s linear infinite; width:max-content; }
+.acme-marquee:hover { animation-play-state:paused; }
+@keyframes acmePing { 0% { transform:scale(1); opacity:.6 } 80%,100% { transform:scale(2); opacity:0 } }
+.acme-ping { animation: acmePing 2s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes acmePulse { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.65; transform:scale(.92) } }
+.acme-pulse { animation: acmePulse 2.4s ease-in-out infinite; }
+.acme-shine { background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%); pointer-events:none; transform:translateX(-120%) skewX(-20deg); transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .2s ease-out; }
+.group:hover > .acme-shine { transform:translateX(120%) skewX(-20deg); }
+.acme-magnetic { transition:transform .25s cubic-bezier(.22,1,.36,1),background-color .3s ease,color .3s ease,box-shadow .3s ease; }
+@keyframes acmeOrbitA { 0%,100% { transform:translate(0,0) } 50% { transform:translate(8px,-6px) } }
+@keyframes acmeOrbitB { 0%,100% { transform:rotate(45deg) translate(0,0) } 50% { transform:rotate(55deg) translate(-6px,6px) } }
+@keyframes acmeOrbitC { 0%,100% { transform:translate(0,0) rotate(0) } 50% { transform:translate(-6px,8px) rotate(-6deg) } }
+.acme-orbit-a { animation:acmeOrbitA 7s ease-in-out infinite; }
+.acme-orbit-b { animation:acmeOrbitB 8s ease-in-out infinite; }
+.acme-orbit-c { animation:acmeOrbitC 7.5s ease-in-out infinite; }
+@keyframes acmeDiscSpin { to { transform:rotate(360deg) } }
+.acme-disc-spin { animation:acmeDiscSpin 30s linear infinite; }
+@keyframes acmeRadar { to { transform:rotate(360deg) } }
+.acme-radar { background:conic-gradient(from 0deg,transparent 0deg,rgba(241,187,54,.18) 60deg,transparent 120deg,transparent 360deg); animation:acmeRadar 12s linear infinite; }
+.acme-card-grid { background-image:linear-gradient(to right,rgba(24,24,23,.16) 1px,transparent 1px),linear-gradient(to bottom,rgba(24,24,23,.16) 1px,transparent 1px); background-size:24px 24px; }
+@keyframes acmeStepLine { from { transform:scaleX(0) } to { transform:scaleX(1) } }
+.acme-step-line { transform-origin:left center; animation:acmeStepLine 1.2s ease-out forwards; }
+@keyframes acmeBadge { 0%,100% { transform:rotate(-2deg) } 50% { transform:rotate(2deg) } }
+.acme-badge { animation:acmeBadge 4s ease-in-out infinite; }
 
-/* Eyebrow accent pulse */
-@keyframes acmeEyebrow {
-  0%, 100% { opacity: 1; transform: scaleX(1); }
-  50% { opacity: 0.6; transform: scaleX(1.4); }
-}
-.acme-eyebrow-pulse {
-  transform-origin: left center;
-  animation: acmeEyebrow 2.4s ease-in-out infinite;
-}
+#features, #pricing, #faq, #product { scroll-margin-top: 84px; }
+a, button { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--coral); outline-offset: 4px; }
 
-/* Scroll indicator line */
-@keyframes acmeScrollLine {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(200%); }
-}
-.acme-scroll-line { animation: acmeScrollLine 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: #8c8980; border: 3px solid var(--paper); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--coral); }
 
-/* Marquee */
-@keyframes acmeMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.acme-marquee {
-  animation: acmeMarquee 35s linear infinite;
-  width: max-content;
-}
-.acme-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Ping (used for live dots) */
-@keyframes acmePing {
-  0% { transform: scale(1); opacity: 0.7; }
-  80%, 100% { transform: scale(2.4); opacity: 0; }
-}
-.acme-ping {
-  animation: acmePing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-/* Generic pulse */
-@keyframes acmePulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(0.85); }
-}
-.acme-pulse { animation: acmePulse 1.8s ease-in-out infinite; }
-
-/* Button shine */
-.acme-shine {
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
-  pointer-events: none;
-  transform: translateX(-120%) skewX(-20deg);
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease-out;
-}
-.group:hover > .acme-shine {
-  transform: translateX(120%) skewX(-20deg);
-}
-
-/* Magnetic button perf */
-.acme-magnetic {
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-              background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Orbital decorative shapes */
-@keyframes acmeOrbitA {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(8px, -6px); }
-}
-@keyframes acmeOrbitB {
-  0%, 100% { transform: rotate(45deg) translate(0, 0); }
-  50% { transform: rotate(55deg) translate(-6px, 6px); }
-}
-@keyframes acmeOrbitC {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-6px, 8px) rotate(-6deg); }
-}
-.acme-orbit-a { animation: acmeOrbitA 5s ease-in-out infinite; }
-.acme-orbit-b { animation: acmeOrbitB 6s ease-in-out infinite; }
-.acme-orbit-c { animation: acmeOrbitC 5.4s ease-in-out infinite; }
-
-/* Disc spin */
-@keyframes acmeDiscSpin {
-  to { transform: rotate(360deg); }
-}
-.acme-disc-spin { animation: acmeDiscSpin 18s linear infinite; }
-
-/* Radar sweep behind partner image */
-@keyframes acmeRadar {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.acme-radar {
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(240, 192, 32, 0.18) 60deg, transparent 120deg, transparent 360deg);
-  animation: acmeRadar 6s linear infinite;
-}
-
-/* Insight card grid */
-.acme-card-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Step connection line draw */
-@keyframes acmeStepLine {
-  0% { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
-}
-.acme-step-line {
-  transform-origin: left center;
-  animation: acmeStepLine 1.2s ease-out forwards;
-}
-
-/* Pricing badge wobble */
-@keyframes acmeBadge {
-  0%, 100% { transform: rotate(-4deg); }
-  50% { transform: rotate(4deg); }
-}
-.acme-badge { animation: acmeBadge 2.6s ease-in-out infinite; }
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  overscroll-behavior-y: auto;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-[#F0F0F0];
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-[#121212] hover:bg-[#D02020];
-  border-radius: 0;
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
 }
+
+
+/* Editorial UI polish across the existing landing page */
+[class~="border-4"],
+[class~="border-t-4"],
+[class~="border-r-4"],
+[class~="border-b-4"],
+[class~="border-l-4"] {
+  border-width: 1px !important;
+}
+[class~="border-black"] { border-color: var(--line) !important; }
+[class~="border-t-4"] { border-top-color: var(--line) !important; }
+[class~="border-r-4"] { border-right-color: var(--line) !important; }
+[class~="border-b-4"] { border-bottom-color: var(--line) !important; }
+[class~="border-l-4"] { border-left-color: var(--line) !important; }
+
+/* Replace the old hard offset shadows with softer, quieter elevation. */
+[class*="shadow-["] {
+  box-shadow: 0 10px 30px rgba(24, 24, 23, .07) !important;
+}
+[class~="bg-white"] { background-color: #fffdf8; }
