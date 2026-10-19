@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import ActionButton from './ActionButton'
+import WebGLIceField from './WebGLIceField'
 
 const HERO_TAGLINE = 'OPERATIONS WITHOUT CHAOS'
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -132,6 +133,7 @@ export default function Hero() {
 
         <div ref={stageRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="relative min-h-[34rem] overflow-hidden border-t border-black/10 bg-[#52C6BF] lg:min-h-0 lg:border-l lg:border-t-0">
           <div aria-hidden="true" className="absolute inset-0 opacity-30 acme-grid-drift" style={{ backgroundImage: 'radial-gradient(circle, rgba(24,24,23,.8) 1px, transparent 1.3px)', backgroundSize: '19px 19px' }} />
+          <WebGLIceField />
           <div aria-hidden="true" className="absolute -right-16 -top-20 h-72 w-72 rounded-full bg-[#F5F1E7]" />
           <div aria-hidden="true" className="absolute -bottom-24 -left-12 h-72 w-72 rounded-full bg-[#F35D68]" />
 
