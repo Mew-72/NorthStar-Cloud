@@ -47,7 +47,7 @@ const fragmentShader = `
 
     vec3 ice = mix(vec3(0.82, 0.94, 1.0), vec3(0.67, 0.70, 0.94), facet * 0.8);
     ice = mix(ice, vec3(0.46, 0.91, 0.88), smoothstep(0.08, 0.34, p.x + 0.1) * 0.38);
-    ice = mix(ice, vec3(1.0, 0.72, 0.78), smoothstep(0.20, -0.16, p.x - p.y * 0.35) * 0.24);
+    ice = mix(ice, vec3(1.0, 0.72, 0.78), 1.0 - smoothstep(-0.16, 0.20, p.x - p.y * 0.35) * 0.24);
     ice += vec3(0.28, 0.23, 0.35) * seams * body * 0.28;
 
     float glint = pow(max(0.0, 1.0 - abs(p.x * 1.6 + p.y * 0.72 - 0.02 - uPointer.x * 0.06)), 28.0);
